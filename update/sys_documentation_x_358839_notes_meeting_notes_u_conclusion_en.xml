@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="u_conclusion" label="Conclusion" language="en" table="x_358839_notes_meeting_notes">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>u_conclusion</element>
+            <help/>
+            <hint/>
+            <label>Conclusion</label>
+            <language>en</language>
+            <name>x_358839_notes_meeting_notes</name>
+            <plural>Conclusions</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2020-03-30 18:24:54</sys_created_on>
+            <sys_id>0534f5fedbbf0010f5bdb08039961998</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Conclusion</sys_name>
+            <sys_package display_value="Meeting Minutes" source="x_358839_notes">3f356d72dbbf0010f5bdb08039961911</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Meeting Minutes">3f356d72dbbf0010f5bdb08039961911</sys_scope>
+            <sys_update_name>sys_documentation_x_358839_notes_meeting_notes_u_conclusion_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2020-03-30 18:24:54</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

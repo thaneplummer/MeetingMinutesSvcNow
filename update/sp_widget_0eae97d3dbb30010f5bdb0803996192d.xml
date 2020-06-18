@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[/*---------------------------------------------------------------------------------
+ *
+ *   Copyright © 2020 Kraken Networks, Inc. and AppVizo, LLC. All Rights Reserved.
+ *
+ *---------------------------------------------------------------------------------*/
+
+// USEFUL: https://community.servicenow.com/community?id=community_article&sys_id=4ce5cdd3db4d1b842328f3231f96192e
+// See: https://www.html5rocks.com/en/tutorials/dnd/basics/
+// DEF: https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/File_drag_and_drop
+// meh: https://medium.com/@mariemchabeni/angular-7-drag-and-drop-simple-file-uploadin-in-less-than-5-minutes-d57eb010c0dc
+// IDEA: copy this https://www.youtube.com/watch?v=RIk_Ck0B4dU
+
+
+function($scope, $rootScope, $location, spAriaFocusManager) {
+  /* widget controller */
+  var c = this;
+	
+  c.dragEnter = function (event) {
+		console.log('dragEnter()');
+    //set class for things being dragged over
+    if (event.target && event.target.classList) {
+      event.target.classList.add('over');
+    }
+		// clear the text
+		document.getElementById('output').textContent = '';
+  };
+
+  c.dragLeave = function (event) {
+		//console.log('dragLeave()');
+    //remove class for things being dragged over
+    if (event.target && event.target.classList) {
+      event.target.classList.remove('over');
+    }
+  };
+
+  c.dragOver = function (event) {
+		if (event.preventDefault) {
+      event.preventDefault(); // Necessary. Allows us to drop.
+    }
+		console.log('dragOver()');
+    
+    event.dataTransfer.dropEffect = 'move';
+    return false;
+  };
+
+	
+  c.drop = function (event, dt) {
+    if (event.stopPropagation) {
+      event.stopPropagation(); // stops the browser from redirecting.
+    }
+		if (event.preventDefault) {
+      event.preventDefault(); // Necessary. Allows us to drop.
+    }
+		var openxmlType = /application\/vnd.openxmlformats-officedocument.wordprocessingml.*/;
+    var files = dt.files;
+		for (var i = 0; i < files.length; i++) {
+			var file = files[i];
+			var output = " File " + i + ":\n(" + (typeof file) + ") : <" + file + " > " +
+					file.name + " " + file.size + "\n";
+			//if (file.type.match(openxmlType)) {
+			if (hasDocxExtension(file.name)) {
+				// Process the file
+				var reader = new FileReader();
+				reader.onload = function(e){
+					var base64str = btoa(e.target.result);
+					if (base64str.length) {
+						console.log(base64str.length); // DEBUG
+						processUploadedDocx(base64str);
+					} else {
+						alert("ERROR - cannot read file. See error log.");
+						console.log("File buffer empty:");
+						console.log(buf);
+						console.log("Error reading file:");
+						console.log(file);
+					}
+				};
+				// file.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.documentFile"
+				reader.readAsBinaryString(file); // readAsBinaryString readAsArrayBuffer
+			} else {
+				alert('Not a Word document. Only SmartDocx processed here.');
+			}
+    }
+		
+    //apply changes to angular if necessary
+    $scope.$apply();
+  }
+	
+	
+	function processUploadedDocx(base64str) {
+		console.log("processUploadedDocx");  // DEBUG
+		callServerGetCustomXml(c, base64str);
+	}
+	
+	
+	function mapCustomXmlToScreen(customXml) {
+		console.log(customXml); // DEBUG
+		var smartDocxType = getSmartDocxType(customXml);
+		
+		if (smartDocxType) {
+			console.log(smartDocxType);
+			// Update the form with the customXml elements.
+			if (confirm(smartDocxType + " SmartDocx detected. Map fields to screen to allow update?")) {
+				
+				callServerFromCustomXml(c, customXml);
+				
+				/*
+				var xdoc = getXDocument(customXml);
+				if (false) { //xdoc) {
+					var els = xdoc.documentElement.childNodes;
+					for (i = 0; i < els.length ; i++) {
+						var el = els[i];
+						if (el) {
+							var node = document.getElementById(el.nodeName);
+							if (node && el.textContent) {
+								node.innerText = el.textContent;
+								console.log('Updating form => ' + el.nodeName + ': ' + el.textContent); // DEBUG;
+							}
+						}
+					}
+				}
+				*/
+				
+			}
+		} else {
+			alert("Document is not SmartDocx");
+		}
+	}
+	
+	
+	function hasDocxExtension(filename) {
+		var parts = filename.split('.');
+		if (parts.length > 1) {
+			var extension = parts[parts.length - 1];
+			if (extension.toLowerCase() === 'docx') {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
+	function isSmartDocx(customXml) {
+		// Get the customXml SmartDocx namespace.
+		var xml = '<?xml version="1.0" encoding="UTF-8"?>';
+		//var ns = '<AzSmartdocx xmlns="http://schemas.appvizo.com/smartdocx/svcnow-ops-iar">';
+		var ns = "AzSmartdocx";
+		return customXml.search(ns) > 0;
+	}
+	
+	
+	function getSmartDocxType(customXml) {
+		// Get the customXml SmartDocx namespace.
+		//var ns = '<AzSmartdocx xmlns="http://schemas.appvizo.com/smartdocx/svcnow-ops-iar">';
+		var docxtype = '';
+		var key = "schemas.appvizo.com\/smartdocx\/";
+		var idx = customXml.search(key) + key.length;
+		if (idx > 0) {
+			var idx2 = customXml.substring(idx).search('"');
+			docxtype = customXml.substr(idx, idx2);
+			switch(docxtype) {
+				case "svcnow-ops-iar":
+					docxtype = "OPS_IAR";
+					break;
+				case "svcnow-meeting-minutes":
+					docxtype = "MEETING_MINUTES";
+					break;
+				default:
+					docxtype = "";
+			} 
+		}
+		return docxtype;
+	}
+	
+	
+	// PART 0: We call the server to do the Ajax calls and build the report.
+	c.saveSmartDocx = function() {
+		console.log("saveSmartDocx");
+		callServerCreateSmartDocx(c);
+	}
+	
+	
+	// Found this magic here: https://community.servicenow.com/community?id=community_question&sys_id=28e38fa5dbd8dbc01dcaf3231f9619b4
+	function callServerFromCustomXml(c, customXml){
+		console.log("callServerFromCustomXml");
+		c.server.get({
+			action:"fromCustomXml",
+			param:customXml})
+			.then(function(response){
+				console.log('response from server fromCustomXml..');
+			  console.log(response.data); //.xml);  // DEBUG
+				//mapCustomXmlToScreen(response.data.xml);
+			}, 
+			callErrorMessage());
+	}
+	
+	
+	// Found this magic here: https://community.servicenow.com/community?id=community_question&sys_id=28e38fa5dbd8dbc01dcaf3231f9619b4
+	function callServerGetCustomXml(c, template){
+		c.server.get({
+			action:"getCustomXml",
+			param:template})
+			.then(function(response){
+				console.log('response from server getCustomXml..');
+			  //console.log(response.data.xml);  // DEBUG
+				mapCustomXmlToScreen(response.data.xml);
+			}, 
+			callErrorMessage());
+	}
+	
+	
+	function callServerCreateSmartDocx(c){
+		c.server.get({
+			action:"createSmartDocx",
+			param:c.data.iar_sys_id})
+			.then(function(response){
+				console.log('response from server createSmartDocx..');
+			  console.log(response.data.xml);  // DEBUG
+				callServerProcessCustomXml(c, response.data.xml);
+			}, 
+			callErrorMessage());
+	}
+	
+	
+	function callServerProcessCustomXml(c, customXml){
+		//console.log(customXml);
+		c.server.get({
+			action:"processCustomXml",
+			param:customXml})
+			.then(function(response){
+				console.log('response from server processCustomXml..');
+				//console.log(response.data.base64); // DEBUG
+			  var blob = b64toBlob(response.data.base64);
+			  var fileName = c.data.number + ".docx";
+			  // Note: https://casknx.com/resources/how-to-add-additional-dependencies-to-your-service-portal-in-servicenow/
+			  // ... didn't seem to work with angular-file-save
+			  saveFile(blob, fileName);
+			}, 
+			callErrorMessage());
+	}
+	
+	
+	function callErrorMessage() {
+		console.log("DONE!");
+	}
+	
+	
+	function saveFile(blob, fileName){
+		// Save File from: https://stackoverflow.com/questions/38462894/how-to-create-and-save-file-to-local-filesystem-using-angularjs
+		if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+			window.navigator.msSaveOrOpenBlob(blob, fileName);
+		} else{
+			var e = document.createEvent('MouseEvents'),
+					a = document.createElement('a');
+			a.download = fileName;
+			a.href = window.URL.createObjectURL(blob);
+			a.dataset.downloadurl = ['application/zip', a.download, a.href].join(':');
+			e.initEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+			a.dispatchEvent(e);
+			// window.URL.revokeObjectURL(a.href); // clean the url.createObjectURL resource
+		}
+	}
+	
+	
+	function getXDocument(xml) {
+		var xdoc = null;
+		if (window.DOMParser)  // Luckily this works in portal pages.
+		{
+			var parser = new DOMParser();
+			xdoc = parser.parseFromString(xml, "text/xml");
+		}
+		else // Internet Explorer
+		{
+			xdoc = new ActiveXObject("Microsoft.XMLDOM");
+			xdoc.async = false;
+			xdoc.loadXML(xml);
+		}
+		return xdoc;
+	}
+	
+	
+	// See: https://stackoverflow.com/questions/16245767/creating-a-blob-from-a-base64-string-in-javascript
+  function b64toBlob (b64Data, contentType, sliceSize) {
+		contentType = contentType || '';
+		sliceSize = sliceSize || 512;
+
+		var byteCharacters = atob(b64Data);
+		var byteArrays = [];
+
+		for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+			var slice = byteCharacters.slice(offset, offset + sliceSize);
+
+			var byteNumbers = new Array(slice.length);
+			for (var i = 0; i < slice.length; i++) {
+				byteNumbers[i] = slice.charCodeAt(i);
+			}
+
+			var byteArray = new Uint8Array(byteNumbers);
+			byteArrays.push(byteArray);
+		}
+
+		var blob = new Blob(byteArrays, {type: contentType});
+		return blob;
+  }
+	
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>#iar td {
+	padding: 4px;
+}
+
+.bs-callout {
+    margin: 10px 0 !important;
+    padding: 20px !important;
+    border-left-style: solid;
+    border-left-width: 10px;
+    color: #2e2e2e;
+}
+
+.bs-callout-success {
+    background-color: #e5f7ef;
+    border-color: #48C891;
+}
+
+.uploadfilecontainer {
+    //background-image: url("../../assets/cloud-2044823_960_720.png");
+    background-repeat: no-repeat;
+    background-size: 100px;
+    background-position: center;
+    height: 160px;
+    width: 80%;
+    margin: 20px auto;
+    border: 2px dashed #1C8ADB;
+    border-radius: 10px;
+}
+
+.uploadfilecontainer:hover {
+    cursor: pointer;
+    background-color: #9ecbec !important;
+    opacity: 0.8;
+}
+
+.files-list {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 10px auto;
+    background: #ffffff;
+    border: 1px dashed;
+    border-radius: 12px;
+    padding: 5px;
+    color: #1c8adb;
+}
+
+.files-list .delete-file {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.files-list .delete-file img {
+    width: 30px;
+}
+
+/* Prevent the text contents of draggable elements from being selectable. */
+
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Required to make elements draggable in old WebKit */
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+}
+
+div{
+    --col-header-color: rgb(242, 242, 242);
+    --taskboard-border-color: rgb(210, 214, 215); 
+    --col-highlight-color: rgb(255, 255, 210);
+}
+
+#drag-n-drop{
+    background-color:white;
+    border-radius: 6px;
+    padding: 6px;
+}
+
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>upload_meeting_minutes</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}
+]]></link>
+        <name>Upload Meeting Minutes</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[/*---------------------------------------------------------------------------------
+ *
+ *   Copyright © 2020 Kraken Networks, Inc. and AppVizo, LLC. All Rights Reserved.
+ *
+ *---------------------------------------------------------------------------------*/
+
+
+(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+	data.xml = '';
+	data.table = 'x_358839_notes_meeting_notes'; // $sp.getValue('table');
+	
+	// Our methods to call the server from the client.
+	if(input){
+		if(input.action == 'createSmartDocx'){
+			// console.log('Called from client script-->createSmartDocx:'+input.param); // DEBUG
+			data.xml = createSmartDocx(input.param);
+			return data.xml;
+		} else if (input.action == 'processCustomXml') {
+			data.base64 = processCustomXml(input.param);
+			return data.base64;
+		} else if (input.action == 'getCustomXml') {
+			data.xml = getCustomXml(input.param);
+			return data.xml;
+		} else if (input.action == 'fromCustomXml') {
+			data.xml = fromCustomXml(input.param);
+			return data.xml;
+		}
+	}
+	
+	// Load the IAR Report - TODO: get selected IAR from list.
+	var gr = new GlideRecordSecure("x_358839_notes_meeting_notes");	
+	//gr.addQuery("sys_id", data.sys_id);
+	gr.setLimit(1);
+	gr.query();
+
+	//If we find it, load the fields
+	if (gr.next()){
+		data.iar_sys_id = gr.getValue("sys_id");
+		data.number = gr.getValue("number");
+		data.title = gr.getValue("u_title");
+		data.agenda = gr.getValue("u_agenda");
+		data.conclusion = gr.getValue("u_conclusion");
+		
+		// People
+		data.meeting_called_by = gr.getDisplayValue("u_meeting_called_by") ? gr.getDisplayValue("u_meeting_called_by") : 'No GPOC OCR';
+		data.facillitator = gr.getDisplayValue("u_facillitator") ? gr.getDisplayValue("u_facillitator") : 'No secondary OCR';
+	}
+	
+})();
+
+
+// PART 4 - Create/Update record from CustomXML.
+function fromCustomXml(customXml) {
+	console.log("Server: fromCustomXml");
+	var ajax = new SmartDocxAjax(); // Server equivalent of GlideAjax('SmartDocxAjax');
+	var xml = ajax.fromCustomXml(customXml);
+	return xml;
+}
+
+
+// PART 3 - get the CustomXML from the template.
+function getCustomXml(template) {
+	console.log("Server: getCustomXml");
+	var ajax = new SmartDocxAjax(); // Server equivalent of GlideAjax('SmartDocxAjax');
+	var xml = ajax.customXML(template);
+	return xml;
+}
+
+
+// PART 2: We parse the CustomXML, add the new content, and send it back to the server.
+function processCustomXml(xml) {
+	console.log("Server: processCustomXml");
+	var ajax = new SmartDocxAjax();
+	var base64 = ajax.getBase64(xml);
+	return base64;
+}
+
+
+// PART 1 - get the CustomXML and merge it with GlideRecord.
+function createSmartDocx(id) {
+	console.log("Server: createSmartDocx");
+	var ajax = new SmartDocxAjax(); // Server equivalent of GlideAjax('SmartDocxAjax');
+	var xml = ajax.mapCustomXmlToRecord(data.table, id);
+	return xml;
+}
+
+]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-04-01 15:26:57</sys_created_on>
+        <sys_id>0eae97d3dbb30010f5bdb0803996192d</sys_id>
+        <sys_mod_count>10</sys_mod_count>
+        <sys_name>Upload Meeting Minutes</sys_name>
+        <sys_package display_value="Meeting Minutes" source="x_358839_notes">3f356d72dbbf0010f5bdb08039961911</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Meeting Minutes">3f356d72dbbf0010f5bdb08039961911</sys_scope>
+        <sys_update_name>sp_widget_0eae97d3dbb30010f5bdb0803996192d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-04-01 18:15:11</sys_updated_on>
+        <template><![CDATA[<div> 
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-xs-12 bs-callout bs-callout-success ng-scope">
+        Proof of concept portal page for Meeting Minutes SmartDocxs. 
+      </div>      
+    </div>
+  </div>
+  <div class="row">
+    <div class="class=col-md-7 col-sm-7 col-xs-12">
+      <div class="panel panel-default b">
+        <div class="panel-heading">
+          <div class="panel-title">
+            Meeting Record
+          </div>
+        </div>
+        <div class="panel-body">
+      <table id="iar">
+         <tr>
+          <th>Report Title</th>
+          <td id="u_report_title" colspan=2>&nbsp; {{data.title}}</td>
+        </tr>
+        <tr>
+          <th>Number</th>
+          <td id="number" colspan=2>&nbsp; {{data.number}}</td>
+        </tr>
+        <tr>
+          <th>Agenda</th>
+          <td id="u_agenda" colspan=2>&nbsp; {{data.agenda}}</td>
+        </tr>
+        <tr>
+          <th>Conclusion</th>
+          <td id="u_conclusion" colspan=2>&nbsp; {{data.conclusion}}</td>
+        </tr>
+        <tr>
+          <th>Called By</th>
+          <td>&nbsp; {{data.meeting_called_by}}</td>
+        </tr>
+        <tr>
+          <th>Facillitator</th>
+          <td>&nbsp; {{data.facillitator}}</td>
+        </tr>
+        <tr>
+          <th>SmartDocx</th>
+          <td>
+            <button type="button" onclick="getScope().saveSmartDocx()" class="btn btn-primary">Generate MS Word SmartDocx</button>
+          </td>
+        </tr>
+      </table>          
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-5 col-sm-5 col-xs-12">
+      <div class="panel panel-default b">
+        <div class="panel-heading">
+          <div class="panel-title">
+            Create new Meeting Minutes with SmartDocx
+          </div>
+        </div>
+        <div class="panel-body">
+          <div id="drag-n-drop">
+            <!-- script for accessing angular from outside -->
+            <script>
+              //gets the angular scope from outside because 
+              //we don't have access to it for drag events
+              function getScope(event) {
+                if (event) {
+                  dodrop(event);
+                }
+                return angular.element('#drag-n-drop').scope().c;
+              }
+
+              function dodrop(event)
+              {
+                var dt = event.dataTransfer;
+                var files = dt.files;
+
+                var count = files.length;
+                output("File Count: " + count + "\n");
+
+                for (var i = 0; i < files.length; i++) {
+                  var file = files[i];
+                  output(" File " + i + ":\n(" + (typeof file) + ") : <" + file + " > " +
+                         file.name + " " + file.size + "\n");
+                  /*
+                  var reader = new FileReader();
+                  reader.onload = function(){
+                    var arrayBuffer = reader.result;
+
+                    console.log(arrayBuffer.byteLength);
+                  };
+                  reader.readAsArrayBuffer(file);
+                  */
+                }
+              }
+
+              function output(text)
+              {
+                document.getElementById("output").textContent += text;
+              }
+
+            </script>
+
+         <!-- <div id="output" class="task-col-content uploadfilecontainer"
+             ondragenter="document.getElementById('output').textContent = ''; event.stopPropagation(); event.preventDefault();"
+             ondragover="event.stopPropagation(); event.preventDefault();"
+             ondrop="event.stopPropagation(); event.preventDefault();
+             dodrop(event);">
+             DROP FILES HERE FROM FINDER OR EXPLORER
+        </div> -->
+          <div id="output" class="task-col-content uploadfilecontainer" ondragenter="getScope().dragEnter(event)" 
+                    ondragleave="getScope().dragLeave(event)" 
+                    ondragover="getScope().dragOver(event)" 
+                    ondrop="getScope(event).drop(event, event.dataTransfer)">
+          <!-- <input hidden type="file" #fileInput (change)="uploadFile($event.target.files)"> -->
+            DROP FILES HERE FROM FINDER OR EXPLORER
+          </div>
+
+          <!--
+          <div  class="files-list" *ngFor="let file of files;let i= index">
+              <p> {{ file }} </p>
+              <button class="delete-file" (click)="deleteAttachment(i)">
+                <img alt="Trash" src="../../assets/Recycle_Bin_Full.png">
+              </button>
+          </div>
+        -->
+
+          </div>          
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <hr/>
+
+</div>
+
+]]></template>
+    </sp_widget>
+</record_update>

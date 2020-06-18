@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_scope_privilege">
+    <sys_scope_privilege action="INSERT_OR_UPDATE">
+        <operation>read</operation>
+        <source_scope display_value="Meeting Minutes">3f356d72dbbf0010f5bdb08039961911</source_scope>
+        <status>allowed</status>
+        <sys_class_name>sys_scope_privilege</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-04-01 15:45:45</sys_created_on>
+        <sys_id>d5f26fd7dbb30010f5bdb080399619cd</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_380321_ops_incident_activity</sys_name>
+        <sys_package display_value="Meeting Minutes" source="x_358839_notes">3f356d72dbbf0010f5bdb08039961911</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Meeting Minutes">3f356d72dbbf0010f5bdb08039961911</sys_scope>
+        <sys_update_name>sys_scope_privilege_d5f26fd7dbb30010f5bdb080399619cd</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-04-01 15:45:45</sys_updated_on>
+        <target_name>x_380321_ops_incident_activity</target_name>
+        <target_scope display_value="OPS">14f7e454db100010e2b3a0f2ca961945</target_scope>
+        <target_type>sys_db_object</target_type>
+    </sys_scope_privilege>
+</record_update>

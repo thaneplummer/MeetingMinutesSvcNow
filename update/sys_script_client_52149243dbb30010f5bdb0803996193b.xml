@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description/>
+        <field>u_start_time</field>
+        <global>true</global>
+        <isolate_script>true</isolate_script>
+        <messages/>
+        <name>Minutes onChange startTime</name>
+        <order/>
+        <script><![CDATA[/*---------------------------------------------------------------------------------
+ *
+ *   Copyright © 2020 Kraken Networks, Inc. and AppVizo, LLC. All Rights Reserved.
+ *
+ *---------------------------------------------------------------------------------*/
+
+function updateDuration(response) {
+	//console.log(response.responseXML);
+    var diff = response.responseXML.documentElement.getAttribute("answer");
+	if (diff) {
+		g_form.setValue('u_duration', diff);
+		g_form.setValue('u_duration_string', diff.toString());
+	}
+}
+
+
+function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+   if (isLoading || newValue === '') {
+      return;
+   }
+
+	try {
+	    var ga = new GlideAjax('DateTimeAjax');
+		var endDate = g_form.getValue('u_end_time');
+		if (endDate === '') {
+			return;
+		}
+		ga.addParam('sysparm_name', 'durationCalc');
+		ga.addParam('sysparm_start_date', newValue);
+		ga.addParam('sysparm_end_date', endDate);
+
+	    ga.getXML(updateDuration);
+	}
+
+	catch(e) { }
+   
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-03-31 15:25:38</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>52149243dbb30010f5bdb0803996193b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Minutes onChange startTime</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Meeting Minutes" source="x_358839_notes">3f356d72dbbf0010f5bdb08039961911</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Meeting Minutes">3f356d72dbbf0010f5bdb08039961911</sys_scope>
+        <sys_update_name>sys_script_client_52149243dbb30010f5bdb0803996193b</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-03-31 15:25:38</sys_updated_on>
+        <table>x_358839_notes_meeting_notes</table>
+        <type>onChange</type>
+        <ui_type>0</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

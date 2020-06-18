@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_358839_notes.SmartDocxAjax</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>SmartDocxAjax</name>
+        <script><![CDATA[/*---------------------------------------------------------------------------------
+ *
+ *   Copyright © 2020 Kraken Networks, Inc. and AppVizo, LLC. All Rights Reserved.
+ *
+ *---------------------------------------------------------------------------------*/
+
+var _table = 'x_358839_notes_meeting_notes';
+
+var map_NOTES = {
+    table: "x_358839_notes_meeting_notes",
+    form_name: "Default view",
+    xmlns: "http://schemas.appvizo.com/smartdocx/svcnow-meeting-minutes",
+    customXmlSource: x_358839_notes.OpenXmlB64Templates.meeting_minutes, // template or customXml_sys_id?
+    fields: [
+        {name: "sys_id", type:"String"},
+        {name: "sys_created_by", type:"String"},
+        {name: "sys_created_on", type:"DateTime"},
+        {name: "sys_updated_by", type:"String"},
+        {name: "sys_updated_on", type:"DateTime"},
+        {name: "number", type:"String"},
+        //{name: "u_action_items", type:"List"},
+        {name: "u_agenda", type:"String"},
+        {name: "u_agenda_item", type:"String"},
+        {name: "u_attendees", type:"List"},
+        {name: "u_conclusion", type:"String"},
+        {name: "u_discussion", type:"String"},
+        {name: "u_duration", type:"String"},
+        {name: "u_end_time", type:"DateTime"},
+        {name: "u_facillitator", type:"Reference"},
+        {name: "u_group", type:"Reference"},
+        {name: "u_location", type:"String"},
+        {name: "u_meeting_called_by", type:"Reference"},
+        {name: "u_scheduled_time", type:"DateTime"},
+        {name: "u_special_notes", type:"String"},
+        {name: "u_start_time", type:"DateTime"},
+        {name: "u_title", type:"String"},
+        {name: "u_type_of_meeting", type:"String"},
+        {name: "x_358839_act_action_item", type:"ForeignRef", 
+            query:"u_meeting_minutes",
+            xmltag:"act_action_item",
+            subfields:["number","u_assigned_on","u_assigned_to","u_short_description","u_due_date","u_report_title","u_status"]}
+    ]
+};
+
+
+var SmartDocxAjax = Class.create();
+SmartDocxAjax.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+	fromCustomXml: function(customXml) {
+		if (!customXml) {
+			customXml = this.getParameter('sysparm_customXml');
+		}
+		var id = recordFromCustomXml(customXml);
+		
+		return "<" + _table + "><sys_id>" + id + "</sys_id></" + _table + ">"; //
+	},
+	mapCustomXmlToRecord: function(table, id) {
+		if (!id) {
+			id = this.getParameter('sysparm_sys_id');
+		}
+		
+		if (!table) {
+			table = this.getParameter('sysparm_table'); 
+		}
+		
+		var customXml = this.customXML(); // this.getParameter('sysparm_customXml');
+		//return mapRecordToCustomXml(table, id, customXml);
+		return processCustomXml(table, id, map_NOTES, customXml);
+	},
+	customXML: function(template) {
+		if (!template) {
+			template = OpenXmlB64Templates.meeting_minutes;
+		}
+		// WARNING: Hard-coded namespace on JSZip.
+		var zip = new x_380321_ops.JSZip(template, {base64: true, checkCRC32: false});
+		var customXml = zip.file("customXml/item1.xml").asText();
+		return customXml;
+	},
+	getBase64: function(customXml, template) {
+		if (!customXml) {
+			customXml = this.getParameter('sysparm_data');  // Get modified customXml
+		}
+		if (!template) {
+			template = this.getParameter('sysparm_template');  // Get modified customXml
+		}
+		
+		var blankDocument = OpenXmlB64Templates.meeting_minutes;
+		/* USE if additional template(s) needed.
+		if (template === 'meeting_minutes2') {
+			blankDocument = OpenXmlB64Templates.meeting_minutes2;
+		} 
+		*/
+		// WARNING: Hard-coded namespace on JSZip.
+		var zip = new x_380321_ops.JSZip(blankDocument, {base64: true, checkCRC32: false});
+		zip.file("customXml/item1.xml", customXml);
+		
+		return zip.generate({
+			  compression: "deflate",
+			  type: "base64"   // base64 and blob are compression options
+			});
+	},
+	getXML: function() {
+		var id = this.getParameter('sysparm_sys_id'); 
+		var table = this.getParameter('sysparm_table'); 
+		var gr = new GlideRecord(table);
+		if (gr.get("sys_id", id)) {
+			var xml = gs.unloadRecordToXML(gr, false);  // false = one line
+			if (xml) {
+				return xml.toString();
+			}
+		}
+		
+		return "ERROR";
+	},
+
+    type: 'SmartDocxAjax'
+});
+
+
+// Ex: "<two value="xxx">abcd1234</two>"
+// Yeah, this is crappy, but it's a special case and we don't get a real XML parser. (sigh)
+function getNodeObject(node) {
+	var val, displayval;
+	if (node) {
+		var nodestr = node.toString();
+		var idx1 = nodestr.search('>');
+		var idx2 = nodestr.search('</');
+		displayval = nodestr.substr(idx1+1, idx2 - idx1 - 1);
+		var atts = nodestr.substring(0, idx1).split('=');
+		if (atts) {
+			var att = atts[1];
+			val = att.substring(1, att.length - 1);
+		}
+	}
+	var o = {
+		displayvalue: displayval,
+		value: val
+	};
+	return o;
+}
+
+
+var mmin_obj = {
+  sys_id: '',
+  u_agenda: '',
+  u_agenda_item: '',
+  u_conclusion: '',
+  u_discussion: '',
+  u_location: '',
+  u_special_notes: '',
+  u_title: ''
+};
+
+// Ideally we could use the import set Util 
+// var isUtil = new global.ImportSetUtil();
+// var res = isUtil.loadFromXML(xmlstr);
+// See: http://www.john-james-andersen.com/blog/service-now/converting-xml-to-a-record-in-servicenow.html
+function recordFromCustomXml(customXml) {
+	//var helper = new global.XMLHelper(customXml);  // ILLEGAL! Stupid SvcNow!!
+	var xdoc = new XMLDocument2();
+	if (xdoc) {
+		xdoc.parseXML(customXml); 
+		var o = Object.create(mmin_obj);
+		o.sys_id = xdoc.getNodeText("//sys_id");
+		o.u_agenda = xdoc.getNodeText("//u_agenda");
+		o.u_agenda_item = xdoc.getNodeText("//u_agenda_item");
+		o.u_conclusion = xdoc.getNodeText("//u_conclusion");
+		o.u_discussion = xdoc.getNodeText("//u_discussion");
+		o.u_end_time = xdoc.getNodeText("//u_end_time");
+		o.u_facillitator = getNodeObject(xdoc.getNode("//u_facillitator"));
+		o.u_location = xdoc.getNodeText("//u_location");
+		o.u_meeting_called_by = getNodeObject(xdoc.getNode("//u_meeting_called_by"));
+		o.u_special_notes = xdoc.getNodeText("//u_special_notes");
+		o.u_scheduled_time = xdoc.getNodeText("//u_scheduled_time");
+		o.u_start_time = xdoc.getNodeText("//u_start_time");
+		o.u_title = xdoc.getNodeText("//u_title");
+		var id = '';
+		if (o.sys_id) {
+			id = updateMeetingMinutes(o);
+		} else {
+			id = newMeetingMinutes(o);
+		}
+		return id;
+	}
+	return "<error>ERROR</error>";
+}
+
+
+function updateMeetingMinutes(o) {
+	var gr = new GlideRecord(_table);
+	if (gr.get(o.sys_id)) {
+	    gr.u_agenda = o.u_agenda;
+		gr.u_agenda_item = o.u_agenda_item;
+		gr.u_conclusion = o.u_conclusion;
+		gr.u_discussion = o.u_discussion;
+		gr.u_end_time = new GlideDateTime(o.u_end_time);
+		gr.u_facillitator = o.u_facillitator.value;
+	    gr.u_facillitator.setDisplayValue(o.u_facillitator.displayvalue);
+		gr.u_location = o.u_location;
+		gr.u_meeting_called_by = o.u_meeting_called_by.value;
+	    gr.u_meeting_called_by.setDisplayValue(o.u_meeting_called_by.displayvalue);
+		gr.u_scheduled_time = new GlideDateTime(o.u_scheduled_time);
+		gr.u_special_notes = o.u_special_notes;
+		//var gdt = new GlideDateTime(o.u_start_time);
+		//var tzu = new TimeZoneUtils(gdt); // Specify a GDT object is optional. 
+		//tzu.setTimeZone('US/Eastern'); // Sets the time-zone to US/Eastern (GMT-5)
+		gr.u_start_time = new GlideDateTime(o.u_start_time);
+		//gr.u_duration = GlideDateTime.subtract(gr.u_start_time, gr.u_end_time);
+		gr.u_title = o.u_title;
+	    gr.update();
+	}
+	return gr.sys_id;
+}
+
+
+function newMeetingMinutes(o) {
+	//Create a new Meeting Minutes record and populate the fields with the values below
+	var gr = new GlideRecord(_table);
+	gr.initialize();
+	gr.u_agenda = o.u_agenda;
+	gr.u_conclusion = o.u_conclusion;
+	gr.u_discussion = o.u_discussion;
+	
+	gr.u_end_time = new GlideDateTime(o.u_end_time);
+	gr.u_facillitator = o.u_facillitator.value;
+	gr.u_facillitator.setDisplayValue(o.u_facillitator.displayvalue);
+	gr.u_location = o.u_location;
+	gr.u_meeting_called_by = o.u_meeting_called_by.value;
+	gr.u_meeting_called_by.setDisplayValue(o.u_meeting_called_by.displayvalue);
+	gr.u_scheduled_time = new GlideDateTime(o.u_scheduled_time);
+	gr.u_special_notes = o.u_special_notes;
+	var gdt = new GlideDateTime(o.u_start_time);
+	//var tzu = new TimeZoneUtils(gdt); // Specify a GDT object is optional. 
+	//tzu.setTimeZone('US/Eastern'); // Sets the time-zone to US/Eastern (GMT-5)
+	gr.u_start_time = gdt;
+	//gr.u_duration = GlideDateTime.subtract(gr.u_start_time, gr.u_end_time);
+	gr.u_title = o.u_title;
+	
+	gr.insert();
+	return gr.sys_id;
+}
+
+function buildJson(val, displayval) {
+	if (val)
+		return val;
+	if (!val && !displayval)
+		return '';
+	if (val && !displayval)
+		return val;
+	if (!val && displayval)
+		return displayval;
+	if (val === displayval) {
+      var valstr = val === null ? '' : val;
+	  return valstr;
+    }
+	//return {value: val, displayValue: displayval};
+	return {value: val, content: displayval};  // Accomodate JsonToXml function.
+}
+
+function buildXml(tag, val, displayval) {
+  if (val === displayval) {
+    var valstr = val === null ? '' : val;
+	  return '<' + tag + '>' + valstr +"</" + tag + '>';
+  }
+	return '<' + tag + ' value="' + val + '">' + displayval +"</" + tag + '>';
+}
+
+
+function mapSubfield(a, id) {
+  if (a.length === 0) {
+    return;
+  }
+  var tbl = a[0].split('.')[0];
+  var gr = new GlideRecord(tbl);
+  gr.addQuery('u_meeting_minutes', id);  // WARNING: Hard-coded field name.
+  gr.query();
+  var xml = '';
+  while (gr.next()) {
+    xml += '<'+tbl+'>';
+    for (var i in a) {
+      field = a[i].split('.')[1];
+      var val = gr.getValue(field);
+      var displayval = gr.getDisplayValue(field);
+      xml += buildXml(field, val, displayval);
+    }
+    xml += '</'+tbl+'>';
+    gs.log(xml.toString());
+  }
+  return xml;
+}
+
+
+function mapString(gr, field) {
+  // Process gr fields
+  var val = gr.getValue(field);
+  var displayval = gr.getDisplayValue(field);
+  return buildXml(field, val, displayval);
+}
+
+
+// This really should use an XML parser, find nodes, and update the customXml "properly".
+function processCustomXml(table, id, map, customXml) {
+    var xml = customXml;
+    var gr = new GlideRecord(table);
+    
+    // Get the record, iterate through fields and process accordingly.
+    if (gr.get(id)) {
+		for (var i in map.fields) {
+            var field = map.fields[i];
+            var tag = field.name;
+            var value = gr.getValue(tag);
+            var displayValue = gr.getDisplayValue(tag);
+            var refval;
+            if (!value)
+                value = "";
+            switch (field.type.toLowerCase()) {
+                case 'foreignref':
+                    var gfr = new GlideRecord(tag);
+                    if (gfr.get(field.query, gr.sys_id)) {
+                        for (var j in field.subfields) {
+                            var subfield = field.subfields[j];
+                            var ftag = tag + '.' + subfield;
+                            value = gfr.getValue(subfield);
+                            displayValue = gfr.getDisplayValue(subfield);
+                            refval = '<' + ftag + ' value="' + value + '">' + displayValue +"</" + ftag + '>';
+                            xml = xml.replace("<"+ftag+"/>", refval);
+                        }
+                    }
+                    break;
+                case 'list':
+                    // Split everything by comma? Multiple values and display values.
+                    refval = '<' + tag + ' value="' + value + '">' + displayValue +"</" + tag + '>';
+                    xml = xml.replace("<"+tag+"/>", refval);
+                    break;
+                case 'reference':
+                    refval = '<' + tag + ' value="' + value + '">' + displayValue +"</" + tag + '>';
+                    xml = xml.replace("<"+tag+"/>", refval);
+                    break;
+                case 'string':
+                    xml = xml.replace("<"+tag+"/>", '<' + tag + '>' + value +"</" + tag + '>');
+                    break;
+                default:
+                    xml = xml.replace("<"+tag+"/>",  '<' + tag + '>' + value +"</" + tag + '>');
+                    break;
+            }
+		}
+		
+		return xml;
+	}
+	return "ERROR: [table,sys_id]:" + table + ',' + id;
+}
+
+
+/*
+function mapRecordToCustomXml(table, id, customXml) {
+	var xml = customXml;
+	var gr = new GlideRecord(table);
+	var fields = [ 'sys_created_by', 'sys_created_on', 'sys_id', 'sys_updated_by', 'sys_updated_on', 'number', 'u_action_items', 'u_agenda', 'u_agenda_item', 'u_attendees', 'u_conclusion', 'u_discussion', 'u_duration', 'u_end_time', 'u_facillitator', 'u_group', 'u_location', 'u_meeting_called_by', 'u_scheduled_time', 'u_special_notes', 'u_start_time', 'u_title', ['x_358839_act_action_item.number', 'x_358839_act_action_item.u_assigned_on', 'x_358839_act_action_item.u_assigned_to', 'x_358839_act_action_item.u_short_description', 'x_358839_act_action_item.u_due_date', 'x_358839_act_action_item.u_status']]; // minus u_type_of_meeting
+
+	var json = gs.xmlToJSON(customXml);
+	
+	if (gr.get(id)) {
+		// DEBUG return xml; // JSON.stringify(jdoc,null,4); // xdoc.toString();
+		// Get the record, iterate through customXml fields and find matching fields.
+		// Copy the field type, value, and display value.
+		for (var i in fields) {
+			var field = fields[i];
+			if (Array.isArray(field)) {
+			  // Get subfields
+			  //var str = mapSubfield(field, id);
+			  // TODO: replace xml below
+			  // xml.replace(...);
+			} else {
+			  // Get regular field
+			  //var s = mapString(gr, field);
+			  var val = gr.getValue(field);
+			  var displayval = ''; // gr.getDisplayValue(field);
+			  var o = buildJson(val, displayval);
+			  if (o) {
+				json.AzSmartdocx[field] = val; // 'asdfasdfasdf';
+			  }
+			  //xml = xml.replace("<"+field+" />", mapString(gr, field));
+			}
+		  }
+		
+		var jlib = new JsonToXml(json);
+		// Add back namespace.
+		
+		//return jlib.XML.replace('<AzSmartdocx>', xmlns); // JSON.stringify(json,null,4);  
+		return xml;
+	}
+	return "ERROR: [table,sys_id]:" + table + ',' + id;
+}
+*/
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-03-31 20:23:15</sys_created_on>
+        <sys_id>e4d89343dbb70010f5bdb080399619d9</sys_id>
+        <sys_mod_count>60</sys_mod_count>
+        <sys_name>SmartDocxAjax</sys_name>
+        <sys_package display_value="Meeting Minutes" source="x_358839_notes">3f356d72dbbf0010f5bdb08039961911</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Meeting Minutes">3f356d72dbbf0010f5bdb08039961911</sys_scope>
+        <sys_update_name>sys_script_include_e4d89343dbb70010f5bdb080399619d9</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-04-29 18:50:57</sys_updated_on>
+    </sys_script_include>
+</record_update>
