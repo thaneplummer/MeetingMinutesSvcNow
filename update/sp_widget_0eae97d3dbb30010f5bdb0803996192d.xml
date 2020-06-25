@@ -164,6 +164,7 @@ function($scope, $rootScope, $location, spAriaFocusManager) {
 				case "svcnow-ops-iar":
 					docxtype = "OPS_IAR";
 					break;
+				case "svcnow-operations-template":  // FIXXX!!
 				case "svcnow-meeting-minutes":
 					docxtype = "MEETING_MINUTES";
 					break;
@@ -499,14 +500,14 @@ function createSmartDocx(id) {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-04-01 15:26:57</sys_created_on>
         <sys_id>0eae97d3dbb30010f5bdb0803996192d</sys_id>
-        <sys_mod_count>10</sys_mod_count>
+        <sys_mod_count>11</sys_mod_count>
         <sys_name>Upload Meeting Minutes</sys_name>
         <sys_package display_value="Meeting Minutes" source="x_358839_notes">3f356d72dbbf0010f5bdb08039961911</sys_package>
         <sys_policy/>
         <sys_scope display_value="Meeting Minutes">3f356d72dbbf0010f5bdb08039961911</sys_scope>
         <sys_update_name>sp_widget_0eae97d3dbb30010f5bdb0803996192d</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-04-01 18:15:11</sys_updated_on>
+        <sys_updated_by>thane.plummer</sys_updated_by>
+        <sys_updated_on>2020-06-22 15:47:36</sys_updated_on>
         <template><![CDATA[<div> 
   <div class="row">
     <div class="col-md-12">

@@ -13,6 +13,20 @@
         <script><![CDATA[/*---------------------------------------------------------------------------------
  *
  *   Copyright © 2020 Kraken Networks, Inc. and AppVizo, LLC. All Rights Reserved.
+ *   File: C:\Projects\ServiceNow\Apps\Meeting Minutes\Meeting-Minutes\Client Development\Client Script\Minutes onChange startTime.js
+ *   Version: 0.1.0
+ *   Notes:
+ *   Application: Meeting Minutes
+ *   Name: Minutes onChange startTime
+ *   Table: Meeting minutes [x_358839_notes_meeting_notes] 
+ *   UI Type: Desktop
+ *   Type: onChange
+ *   Field name: Start time
+ *   Active: True
+ *   Inherited: False
+ *   Global: True
+ *   Isolate script: True
+ *   Description:
  *
  *---------------------------------------------------------------------------------*/
 
@@ -53,15 +67,15 @@ function onChange(control, oldValue, newValue, isLoading, isTemplate) {
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>52149243dbb30010f5bdb0803996193b</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>Minutes onChange startTime</sys_name>
         <sys_overrides/>
         <sys_package display_value="Meeting Minutes" source="x_358839_notes">3f356d72dbbf0010f5bdb08039961911</sys_package>
         <sys_policy/>
         <sys_scope display_value="Meeting Minutes">3f356d72dbbf0010f5bdb08039961911</sys_scope>
         <sys_update_name>sys_script_client_52149243dbb30010f5bdb0803996193b</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-03-31 15:25:38</sys_updated_on>
+        <sys_updated_by>arendil.plummer</sys_updated_by>
+        <sys_updated_on>2020-06-25 17:25:21</sys_updated_on>
         <table>x_358839_notes_meeting_notes</table>
         <type>onChange</type>
         <ui_type>0</ui_type>

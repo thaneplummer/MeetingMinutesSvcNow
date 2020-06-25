@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element label="Meeting minutes" max_length="40" name="x_358839_notes_meeting_notes" type="collection">
         <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
-        <element attributes="no_sort=true,slushbucket_ref_no_expand=true" label="Action items" max_length="1024" name="u_action_items" reference="x_358839_act_action_item" type="glide_list"/>
+        <element attributes="no_sort=true,slushbucket_ref_no_expand=true" label="Action items" max_length="1024" name="u_action_items" reference="x_358839_act_action_item" type="reference"/>
         <element attributes="edge_encryption_enabled=true" label="Agenda" max_length="250" name="u_agenda" type="string"/>
         <element attributes="edge_encryption_enabled=true" label="Agenda items" max_length="500" name="u_agenda_item" type="string"/>
         <element attributes="no_sort=true,slushbucket_ref_no_expand=true" label="Attendees" max_length="1024" name="u_attendees" reference="sys_user" type="glide_list"/>
@@ -9,7 +9,7 @@
         <element attributes="edge_encryption_enabled=true" label="Discussion" max_length="1000" name="u_discussion" type="string"/>
         <element label="Duration" max_length="40" name="u_duration" type="glide_duration"/>
         <element attributes="edge_encryption_enabled=true" label="End time" max_length="40" name="u_end_time" type="glide_date_time"/>
-        <element label="Facillitator" max_length="32" name="u_facillitator" reference="sys_user" type="reference"/>
+        <element label="Facilitator" max_length="32" name="u_facillitator" reference="sys_user" type="reference"/>
         <element label="Group" max_length="32" name="u_group" reference="sys_user_group" type="reference"/>
         <element attributes="edge_encryption_enabled=true" label="Location" max_length="200" name="u_location" type="string"/>
         <element label="Meeting called by" max_length="32" name="u_meeting_called_by" reference="sys_user" type="reference"/>

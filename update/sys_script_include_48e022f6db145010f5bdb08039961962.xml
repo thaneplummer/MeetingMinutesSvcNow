@@ -8,7 +8,24 @@
         <description>Converts JSON object to XML. Source: https://sites.google.com/site/mynotepad2/developer-notes/javascript/javascript-convert-json-object-to-xml-string&#13;
 Inverse  function of  gs.xmlToJSON(xmlString);</description>
         <name>JsonToXml</name>
-        <script><![CDATA[var JsonToXml = Class.create();
+        <script><![CDATA[/*---------------------------------------------------------------------------------
+ *
+ *   Copyright © 2020 Kraken Networks, Inc. and AppVizo, LLC. All Rights Reserved.
+ *   File: C:\Projects\ServiceNow\Apps\Meeting Minutes\Meeting-Minutes\Server Development\Script Include\JsonToXml.js
+ *   Version: 0.1.0
+ *   Notes:
+ *   Application: Meeting Minutes
+ *   Name: JsonToXml
+ *   API Name: x_358839_notes.JsonToXml
+ *   Client callable: False
+ *   Caller Access: --None--
+ *   Accessible from: All application scopes
+ *   Active: True
+ *   Description: Converts JSON object to XML. Source: https://sites.google.com/site/mynotepad2/developer-notes/javascript/javascript- convert-json-object-to-xml-string
+Inverse  function of  gs.xmlToJSON(xmlString);
+ *
+ *---------------------------------------------------------------------------------*/
+var JsonToXml = Class.create();
 JsonToXml.prototype = {
     initialize: function(json) {
 		this.XML = json2xml(json);
@@ -112,13 +129,13 @@ function json2xml(o) {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-04-24 18:14:56</sys_created_on>
         <sys_id>48e022f6db145010f5bdb08039961962</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_name>JsonToXml</sys_name>
         <sys_package display_value="Meeting Minutes" source="x_358839_notes">3f356d72dbbf0010f5bdb08039961911</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Meeting Minutes">3f356d72dbbf0010f5bdb08039961911</sys_scope>
         <sys_update_name>sys_script_include_48e022f6db145010f5bdb08039961962</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-04-24 21:21:15</sys_updated_on>
+        <sys_updated_by>arendil.plummer</sys_updated_by>
+        <sys_updated_on>2020-06-25 17:31:10</sys_updated_on>
     </sys_script_include>
 </record_update>

@@ -10,6 +10,17 @@
         <script><![CDATA[/*---------------------------------------------------------------------------------
  *
  *   Copyright © 2020 Kraken Networks, Inc. and AppVizo, LLC. All Rights Reserved.
+ *   File: C:\Projects\ServiceNow\Apps\Meeting Minutes\Meeting-Minutes\Server Development\Script Include\DateTimeAjax.js
+ *   Version: 0.1.0
+ *   Notes:
+ *   Application: Meeting Minutes 
+ *   Name: DateTimeAjax
+ *   API Name: x_358839_notes.DateTimeAjax
+ *   Client callable: True 
+ *   Caller Access: --None--
+ *   Accessible from: This application scope only
+ *   Active: True
+ *   Description: 
  *
  *---------------------------------------------------------------------------------*/
 
@@ -38,13 +49,13 @@ DateTimeAjax.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-03-31 15:19:36</sys_created_on>
         <sys_id>b1439603dbb30010f5bdb0803996192a</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>DateTimeAjax</sys_name>
         <sys_package display_value="Meeting Minutes" source="x_358839_notes">3f356d72dbbf0010f5bdb08039961911</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Meeting Minutes">3f356d72dbbf0010f5bdb08039961911</sys_scope>
         <sys_update_name>sys_script_include_b1439603dbb30010f5bdb0803996192a</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-03-31 15:19:36</sys_updated_on>
+        <sys_updated_by>arendil.plummer</sys_updated_by>
+        <sys_updated_on>2020-06-25 17:30:43</sys_updated_on>
     </sys_script_include>
 </record_update>

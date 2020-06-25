@@ -2,359 +2,345 @@
     <sys_ui_section caption="" section_id="72e17d3edbbf0010f5bdb0803996197f" sys_domain="global" table="x_358839_notes_meeting_notes" version="3" view="">
         <sys_ui_annotation action="INSERT_OR_UPDATE">
             <is_plain_text>false</is_plain_text>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-03-31 19:21:22</sys_created_on>
-            <sys_id>0aba0387db770010f5bdb080399619c7</sys_id>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-06-22 13:33:29</sys_created_on>
+            <sys_id>cf0791f9db2d1010f5bdb080399619c8</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-03-31 19:21:22</sys_updated_on>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-06-22 13:33:29</sys_updated_on>
             <text>Personnel</text>
             <type display_value="Section Separator">443e806c0fd30000b12e6903cfe01281</type>
         </sys_ui_annotation>
         <sys_ui_annotation action="INSERT_OR_UPDATE">
             <is_plain_text>false</is_plain_text>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-03-31 19:21:22</sys_created_on>
-            <sys_id>0eba0387db770010f5bdb080399619c7</sys_id>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-06-22 13:33:29</sys_created_on>
+            <sys_id>c30791f9db2d1010f5bdb080399619c9</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-03-31 19:21:22</sys_updated_on>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-06-22 13:33:29</sys_updated_on>
             <text>Meeting Details</text>
             <type display_value="Section Separator">443e806c0fd30000b12e6903cfe01281</type>
         </sys_ui_annotation>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>number</element>
             <position>0</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-03-31 19:21:22</sys_created_on>
-            <sys_id>ceba0387db770010f5bdb080399619c7</sys_id>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-06-22 13:33:29</sys_created_on>
+            <sys_id>870791f9db2d1010f5bdb080399619c9</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">72e17d3edbbf0010f5bdb0803996197f</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-03-31 19:21:22</sys_updated_on>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-06-22 13:33:29</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>u_title</element>
             <position>1</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-03-31 19:21:22</sys_created_on>
-            <sys_id>46ba0387db770010f5bdb080399619c8</sys_id>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-06-22 13:33:29</sys_created_on>
+            <sys_id>0f0791f9db2d1010f5bdb080399619c9</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">72e17d3edbbf0010f5bdb0803996197f</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-03-31 19:21:22</sys_updated_on>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-06-22 13:33:29</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>u_scheduled_time</element>
             <position>2</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-03-31 19:21:22</sys_created_on>
-            <sys_id>caba0387db770010f5bdb080399619c8</sys_id>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-06-22 13:33:29</sys_created_on>
+            <sys_id>830791f9db2d1010f5bdb080399619ca</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">72e17d3edbbf0010f5bdb0803996197f</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-03-31 19:21:22</sys_updated_on>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-06-22 13:33:29</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>u_location</element>
             <position>3</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-03-31 19:21:22</sys_created_on>
-            <sys_id>42ba0387db770010f5bdb080399619c9</sys_id>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-06-22 13:33:29</sys_created_on>
+            <sys_id>0b0791f9db2d1010f5bdb080399619ca</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">72e17d3edbbf0010f5bdb0803996197f</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-03-31 19:21:22</sys_updated_on>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-06-22 13:33:29</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.split</element>
             <position>4</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-03-31 19:21:22</sys_created_on>
-            <sys_id>c6ba0387db770010f5bdb080399619c9</sys_id>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-06-22 13:33:29</sys_created_on>
+            <sys_id>8f0791f9db2d1010f5bdb080399619ca</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">72e17d3edbbf0010f5bdb0803996197f</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-03-31 19:21:22</sys_updated_on>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-06-22 13:33:29</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>u_start_time</element>
             <position>5</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-03-31 19:21:22</sys_created_on>
-            <sys_id>4eba0387db770010f5bdb080399619c9</sys_id>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-06-22 13:33:29</sys_created_on>
+            <sys_id>070791f9db2d1010f5bdb080399619cb</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">72e17d3edbbf0010f5bdb0803996197f</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-03-31 19:21:22</sys_updated_on>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-06-22 13:33:29</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>u_end_time</element>
             <position>6</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-03-31 19:21:22</sys_created_on>
-            <sys_id>c2ba0387db770010f5bdb080399619ca</sys_id>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-06-22 13:33:29</sys_created_on>
+            <sys_id>8b0791f9db2d1010f5bdb080399619cb</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">72e17d3edbbf0010f5bdb0803996197f</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-03-31 19:21:22</sys_updated_on>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-06-22 13:33:29</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>u_duration</element>
             <position>7</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-03-31 19:21:22</sys_created_on>
-            <sys_id>4aba0387db770010f5bdb080399619ca</sys_id>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-06-22 13:33:29</sys_created_on>
+            <sys_id>030791f9db2d1010f5bdb080399619cc</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">72e17d3edbbf0010f5bdb0803996197f</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-03-31 19:21:22</sys_updated_on>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-06-22 13:33:29</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.end_split</element>
             <position>8</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-03-31 19:21:22</sys_created_on>
-            <sys_id>ceba0387db770010f5bdb080399619ca</sys_id>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-06-22 13:33:29</sys_created_on>
+            <sys_id>870791f9db2d1010f5bdb080399619cc</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">72e17d3edbbf0010f5bdb0803996197f</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-03-31 19:21:22</sys_updated_on>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-06-22 13:33:29</sys_updated_on>
             <sys_user/>
             <type>.end_split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>u_agenda</element>
             <position>9</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-03-31 19:21:22</sys_created_on>
-            <sys_id>46ba0387db770010f5bdb080399619cb</sys_id>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-06-22 13:33:29</sys_created_on>
+            <sys_id>0f0791f9db2d1010f5bdb080399619cc</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">72e17d3edbbf0010f5bdb0803996197f</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-03-31 19:21:22</sys_updated_on>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-06-22 13:33:29</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>0aba0387db770010f5bdb080399619c7</element>
+            <element>cf0791f9db2d1010f5bdb080399619c8</element>
             <position>10</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-03-31 19:21:22</sys_created_on>
-            <sys_id>caba0387db770010f5bdb080399619cb</sys_id>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-06-22 13:33:29</sys_created_on>
+            <sys_id>830791f9db2d1010f5bdb080399619cd</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">72e17d3edbbf0010f5bdb0803996197f</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-03-31 19:21:22</sys_updated_on>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-06-22 13:33:29</sys_updated_on>
             <sys_user/>
             <type>annotation</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.begin_split</element>
             <position>11</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-03-31 19:21:22</sys_created_on>
-            <sys_id>42ba0387db770010f5bdb080399619cc</sys_id>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-06-22 13:33:29</sys_created_on>
+            <sys_id>0b0791f9db2d1010f5bdb080399619cd</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">72e17d3edbbf0010f5bdb0803996197f</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-03-31 19:21:22</sys_updated_on>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-06-22 13:33:29</sys_updated_on>
             <sys_user/>
             <type>.begin_split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>u_meeting_called_by</element>
             <position>12</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-03-31 19:21:22</sys_created_on>
-            <sys_id>c6ba0387db770010f5bdb080399619cc</sys_id>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-06-22 13:33:29</sys_created_on>
+            <sys_id>8f0791f9db2d1010f5bdb080399619cd</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">72e17d3edbbf0010f5bdb0803996197f</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-03-31 19:21:22</sys_updated_on>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-06-22 13:33:29</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>u_group</element>
             <position>13</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-03-31 19:21:22</sys_created_on>
-            <sys_id>4eba0387db770010f5bdb080399619cc</sys_id>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-06-22 13:33:29</sys_created_on>
+            <sys_id>070791f9db2d1010f5bdb080399619ce</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">72e17d3edbbf0010f5bdb0803996197f</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-03-31 19:21:22</sys_updated_on>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-06-22 13:33:29</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.split</element>
             <position>14</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-03-31 19:21:22</sys_created_on>
-            <sys_id>c2ba0387db770010f5bdb080399619cd</sys_id>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-06-22 13:33:29</sys_created_on>
+            <sys_id>8b0791f9db2d1010f5bdb080399619ce</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">72e17d3edbbf0010f5bdb0803996197f</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-03-31 19:21:22</sys_updated_on>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-06-22 13:33:29</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>u_facillitator</element>
             <position>15</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-03-31 19:21:22</sys_created_on>
-            <sys_id>4aba0387db770010f5bdb080399619cd</sys_id>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-06-22 13:33:29</sys_created_on>
+            <sys_id>030791f9db2d1010f5bdb080399619cf</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">72e17d3edbbf0010f5bdb0803996197f</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-03-31 19:21:22</sys_updated_on>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-06-22 13:33:29</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.end_split</element>
             <position>16</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-03-31 19:21:22</sys_created_on>
-            <sys_id>ceba0387db770010f5bdb080399619cd</sys_id>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-06-22 13:33:29</sys_created_on>
+            <sys_id>870791f9db2d1010f5bdb080399619cf</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">72e17d3edbbf0010f5bdb0803996197f</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-03-31 19:21:22</sys_updated_on>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-06-22 13:33:29</sys_updated_on>
             <sys_user/>
             <type>.end_split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>u_attendees</element>
             <position>17</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-03-31 19:21:22</sys_created_on>
-            <sys_id>46ba0387db770010f5bdb080399619ce</sys_id>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-06-22 13:33:29</sys_created_on>
+            <sys_id>0f0791f9db2d1010f5bdb080399619cf</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">72e17d3edbbf0010f5bdb0803996197f</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-03-31 19:21:22</sys_updated_on>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-06-22 13:33:29</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>0eba0387db770010f5bdb080399619c7</element>
+            <element>c30791f9db2d1010f5bdb080399619c9</element>
             <position>18</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-03-31 19:21:22</sys_created_on>
-            <sys_id>caba0387db770010f5bdb080399619ce</sys_id>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-06-22 13:33:29</sys_created_on>
+            <sys_id>830791f9db2d1010f5bdb080399619d0</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">72e17d3edbbf0010f5bdb0803996197f</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-03-31 19:21:22</sys_updated_on>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-06-22 13:33:29</sys_updated_on>
             <sys_user/>
             <type>annotation</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>u_agenda_item</element>
             <position>19</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-03-31 19:21:22</sys_created_on>
-            <sys_id>42ba0387db770010f5bdb080399619cf</sys_id>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-06-22 13:33:29</sys_created_on>
+            <sys_id>0b0791f9db2d1010f5bdb080399619d0</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">72e17d3edbbf0010f5bdb0803996197f</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-03-31 19:21:22</sys_updated_on>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-06-22 13:33:29</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>u_discussion</element>
             <position>20</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-03-31 19:21:22</sys_created_on>
-            <sys_id>c6ba0387db770010f5bdb080399619cf</sys_id>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-06-22 13:33:29</sys_created_on>
+            <sys_id>8f0791f9db2d1010f5bdb080399619d0</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">72e17d3edbbf0010f5bdb0803996197f</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-03-31 19:21:22</sys_updated_on>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-06-22 13:33:29</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>u_special_notes</element>
             <position>21</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-03-31 19:21:22</sys_created_on>
-            <sys_id>4eba0387db770010f5bdb080399619cf</sys_id>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-06-22 13:33:29</sys_created_on>
+            <sys_id>070791f9db2d1010f5bdb080399619d1</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">72e17d3edbbf0010f5bdb0803996197f</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-03-31 19:21:22</sys_updated_on>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-06-22 13:33:29</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>u_conclusion</element>
             <position>22</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-03-31 19:21:22</sys_created_on>
-            <sys_id>c2ba0387db770010f5bdb080399619d0</sys_id>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-06-22 13:33:29</sys_created_on>
+            <sys_id>8b0791f9db2d1010f5bdb080399619d1</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">72e17d3edbbf0010f5bdb0803996197f</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-03-31 19:21:22</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>u_action_items</element>
-            <position>23</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2020-03-31 19:21:22</sys_created_on>
-            <sys_id>4aba0387db770010f5bdb080399619d0</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">72e17d3edbbf0010f5bdb0803996197f</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2020-03-31 19:21:22</sys_updated_on>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-06-22 13:33:29</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>

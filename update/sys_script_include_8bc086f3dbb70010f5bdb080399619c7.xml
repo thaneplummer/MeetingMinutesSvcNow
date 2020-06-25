@@ -7,7 +7,23 @@
         <client_callable>false</client_callable>
         <description>From: https://snprotips.com/blog/2017/9/12/handling-timezones-in-servicenow-timezoneutil</description>
         <name>TimeZoneUtils</name>
-        <script><![CDATA[var TimeZoneUtils = Class.create();
+        <script><![CDATA[ /*---------------------------------------------------------------------------------
+ *
+ *   Copyright © 2020 Kraken Networks, Inc. and AppVizo, LLC. All Rights Reserved.
+ *   File: C:\Projects\ServiceNow\Apps\Meeting Minutes\Meeting-Minutes\Server Development\Script Include\TimeZoneUtils.js
+ *   Version: 0.1.0
+ *   Notes:
+ *   Application: Meeting Minutes
+ *   Name: TimeZoneUtils
+ *   API Name: x_358839_notes.TimeZoneUtils 
+ *   Client callable: False
+ *   Caller Access: --None--
+ *   Accessible from: All application scopes
+ *   Active: True
+ *   Description: From: https://snprotips.com/blog/2017/9/12/handling-timezones-in-servicenow-timezoneutil
+ *
+ *---------------------------------------------------------------------------------*/
+var TimeZoneUtils = Class.create();
 TimeZoneUtils.prototype = {
 
     /**
@@ -195,13 +211,13 @@ TimeZoneUtils.prototype = {
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-04-02 21:54:33</sys_created_on>
         <sys_id>8bc086f3dbb70010f5bdb080399619c7</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>TimeZoneUtils</sys_name>
         <sys_package display_value="Meeting Minutes" source="x_358839_notes">3f356d72dbbf0010f5bdb08039961911</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Meeting Minutes">3f356d72dbbf0010f5bdb08039961911</sys_scope>
         <sys_update_name>sys_script_include_8bc086f3dbb70010f5bdb080399619c7</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-04-02 21:54:33</sys_updated_on>
+        <sys_updated_by>arendil.plummer</sys_updated_by>
+        <sys_updated_on>2020-06-25 17:32:52</sys_updated_on>
     </sys_script_include>
 </record_update>
