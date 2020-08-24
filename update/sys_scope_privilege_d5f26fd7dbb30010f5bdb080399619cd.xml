@@ -16,7 +16,7 @@
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2020-04-01 15:45:45</sys_updated_on>
         <target_name>x_380321_ops_incident_activity</target_name>
-        <target_scope display_value="OPS">14f7e454db100010e2b3a0f2ca961945</target_scope>
+        <target_scope/>
         <target_type>sys_db_object</target_type>
     </sys_scope_privilege>
 </record_update>
