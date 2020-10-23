@@ -6,8 +6,10 @@
         <dynamic_title_structure/>
         <id>meeting_minutes_page</id>
         <internal>false</internal>
+        <omit_watcher>false</omit_watcher>
         <public>true</public>
         <roles/>
+        <seo_script/>
         <short_description>Page to upload Meeting Minutes to create new records.</short_description>
         <sys_class_name>sp_page</sys_class_name>
         <sys_created_by>admin</sys_created_by>
@@ -22,6 +24,7 @@
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2020-04-01 15:58:16</sys_updated_on>
         <title>Upload Meeting Minutes</title>
+        <use_seo_script>false</use_seo_script>
     </sp_page>
     <sys_translated_text action="delete_multiple" query="documentkey=42aed317dbb30010f5bdb08039961983"/>
 </record_update>
