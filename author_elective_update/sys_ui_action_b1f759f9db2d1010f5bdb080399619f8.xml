@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_action">
+    <sys_ui_action action="DELETE">
+        <action_name>create_ms_word_action</action_name>
+        <active>true</active>
+        <client>true</client>
+        <client_script_v2><![CDATA[function onClick(g_form) { }]]></client_script_v2>
+        <comments/>
+        <condition/>
+        <form_action>true</form_action>
+        <form_button>true</form_button>
+        <form_button_v2>false</form_button_v2>
+        <form_context_menu>false</form_context_menu>
+        <form_link>false</form_link>
+        <form_menu_button_v2>false</form_menu_button_v2>
+        <form_style/>
+        <hint/>
+        <isolate_script>true</isolate_script>
+        <list_action>false</list_action>
+        <list_banner_button>false</list_banner_button>
+        <list_button>false</list_button>
+        <list_choice>false</list_choice>
+        <list_context_menu>false</list_context_menu>
+        <list_link>false</list_link>
+        <list_save_with_form_button>false</list_save_with_form_button>
+        <list_style/>
+        <messages/>
+        <name>Export MS Word</name>
+        <onclick>create_ms_word_action()</onclick>
+        <order>100</order>
+        <script><![CDATA[ /*---------------------------------------------------------------------------------
+ *
+ *   Copyright © 2020 Kraken Networks, Inc. and AppVizo, LLC. All Rights Reserved.
+ *   File: C:\Projects\ServiceNow\Apps\Meeting Minutes\Meeting-Minutes\Server Development\UI Action\Create MS Word.js
+ *   Version: 0.1.0
+ *   Notes:
+ *   Application: 
+ *   Name: Create MS Word
+ *   Table: Meeting minutes [x_358839_notes_meeting_notes]
+ *   Order: 100
+ *   Action name: create_ms_word_action
+ *   Active: True
+ *   Show insert: True
+ *   Show update: True
+ *   Client: True
+ *   Form button: True
+ *   Form context menu: False
+ *   Form link: False
+ *   List banner button: False
+ *   List bottom button: False
+ *   List context menu: False
+ *   List choice: False
+ *   List link: False
+ *   Comments:
+ *   Hint:
+ *   Onclick: create_ms_word_action()
+ *   Condition:
+ *
+ *---------------------------------------------------------------------------------*/
+function create_ms_word_action(){console.log("Function saveSmartDocx()");getCustomXML("0e21d975db2d1010f5bdb080399619c3");} var _saveAs = _saveAs || (function(view) { "use strict"; if (typeof view === "undefined" || typeof navigator !== "undefined" && /MSIE [1-9]\./.test(navigator.userAgent)) { return; } var doc = view.document; var get_URL = function() { return view.URL || view.webkitURL || view; }; var save_link = doc.createElementNS("http://www.w3.org/1999/xhtml", "a"); var can_use_save_link = "download" in save_link; var click = function(node) { var event = new MouseEvent("click"); node.dispatchEvent(event); }; var is_safari = /constructor/i.test(view.HTMLElement) || view.safari; var is_chrome_ios =/CriOS\/[\d]+/.test(navigator.userAgent); var throw_outside = function(ex) { (view.setImmediate || view.setTimeout)(function() { throw ex; }, 0); }; var force_saveable_type = "application/octet-stream"; var arbitrary_revoke_timeout = 1000 * 40; var revoke = function(file) { var revoker = function() { if (typeof file === "string") {  get_URL().revokeObjectURL(file); } else {  file.remove(); } }; setTimeout(revoker, arbitrary_revoke_timeout); }; var dispatch = function(filesaver, event_types, event) { event_types = [].concat(event_types); var i = event_types.length; while (i--) { var listener = filesaver["on" + event_types[i]]; if (typeof listener === "function") { try { listener.call(filesaver, event || filesaver); } catch (ex) { throw_outside(ex); } } } }; var auto_bom = function(blob) { if (/^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(blob.type)) { return new Blob([String.fromCharCode(0xFEFF), blob], {type: blob.type}); } return blob; }; var FileSaver = function(blob, name, no_auto_bom) { if (!no_auto_bom) { blob = auto_bom(blob); } var filesaver = this; var type = blob.type; var force = type === force_saveable_type; var object_url; var dispatch_all = function() { dispatch(filesaver, "writestart progress write writeend".split(" ")); }; var fs_error = function() { if ((is_chrome_ios || (force && is_safari)) && view.FileReader) { var reader = new FileReader(); reader.onloadend = function() { var url = is_chrome_ios ? reader.result : reader.result.replace(/^data:[^;]*;/, "data:attachment/file;"); var popup = view.open(url, "_blank"); if(!popup) view.location.href = url; url=undefined;  filesaver.readyState = filesaver.DONE; dispatch_all(); }; reader.readAsDataURL(blob); filesaver.readyState = filesaver.INIT; return; } if (!object_url) { object_url = get_URL().createObjectURL(blob); } if (force) { view.location.href = object_url; } else { var opened = view.open(object_url, "_blank"); if (!opened) { view.location.href = object_url; } } filesaver.readyState = filesaver.DONE; dispatch_all(); revoke(object_url); }; filesaver.readyState = filesaver.INIT; if (can_use_save_link) { object_url = get_URL().createObjectURL(blob); setTimeout(function() { save_link.href = object_url; save_link.download = name; click(save_link); dispatch_all(); revoke(object_url); filesaver.readyState = filesaver.DONE; }); return; } fs_error(); }; var FS_proto = FileSaver.prototype; var _saveAs = function(blob, name, no_auto_bom) { return new FileSaver(blob, name || blob.name || "download", no_auto_bom); }; if (typeof navigator !== "undefined" && navigator.msSaveOrOpenBlob) { return function(blob, name, no_auto_bom) { name = name || blob.name || "download"; if (!no_auto_bom) { blob = auto_bom(blob); } return navigator.msSaveOrOpenBlob(blob, name); }; } FS_proto.abort = function(){}; FS_proto.readyState = FS_proto.INIT = 0; FS_proto.WRITING = 1; FS_proto.DONE = 2; FS_proto.error = null; FS_proto.onwritestart = null; FS_proto.onprogress = null; FS_proto.onwrite = null; FS_proto.onabort = null; FS_proto.onerror = null; FS_proto.onwriteend = null; return _saveAs; }( typeof self !== "undefined" && self || typeof window !== "undefined" && window || this.content ));var b64toBlob=function(b64Data,contentType,sliceSize){contentType=contentType||"";sliceSize=sliceSize||512;var byteCharacters=atob(b64Data);var byteArrays=[];for(var offset=0;offset<byteCharacters.length;offset+=sliceSize){var slice=byteCharacters.slice(offset,offset+sliceSize);var byteNumbers=new Array(slice.length);for(var i=0;i<slice.length;i++){byteNumbers[i]=slice.charCodeAt(i);}var byteArray=new Uint8Array(byteNumbers);byteArrays.push(byteArray);}var blob=new Blob(byteArrays,{type:contentType});return blob;};function saveOpenXml(response){var answer=response.responseXML.documentElement.getAttribute("answer"); console.log("saveOpenXml"); var suffix = ".docx~"; var idx = answer.indexOf(suffix) + suffix.length; var filename = answer.substring(0,idx-1); var docx = answer.substring(idx); var formData=b64toBlob(docx,"application/vnd.openxmlformats-officedocument.wordprocessingml.document");_saveAs(formData,filename);}function getCustomXML(template_id){console.log("getCustomXML: "+template_id);var id=g_form.getUniqueValue();var table=g_form.getTableName();var ajax=new GlideAjax("x_358839_smartdocx.SmartDocxAjax"); ajax.addParam("sysparm_name","mapRecordToOpenXmlTemplate"); ajax.addParam("sysparm_sys_id",id); ajax.addParam("sysparm_table",table);ajax.addParam("sysparm_template_id",template_id);ajax.getXML(saveOpenXml);}]]></script>
+        <show_insert>true</show_insert>
+        <show_multiple_update>false</show_multiple_update>
+        <show_query>false</show_query>
+        <show_update>true</show_update>
+        <sys_class_name>sys_ui_action</sys_class_name>
+        <sys_created_by>elizabeth.campbell</sys_created_by>
+        <sys_created_on>2020-06-22 13:37:30</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>b1f759f9db2d1010f5bdb080399619f8</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Export MS Word</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Meeting Minutes" source="x_358839_notes">3f356d72dbbf0010f5bdb08039961911</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Meeting Minutes">3f356d72dbbf0010f5bdb08039961911</sys_scope>
+        <sys_update_name>sys_ui_action_b1f759f9db2d1010f5bdb080399619f8</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-11-02 21:05:48</sys_updated_on>
+        <table>x_358839_notes_meeting_notes</table>
+        <ui11_compatible>true</ui11_compatible>
+        <ui16_compatible>false</ui16_compatible>
+    </sys_ui_action>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Meeting Minutes">3f356d72dbbf0010f5bdb08039961911</application>
+        <file_path/>
+        <instance_id>68c65b33dbccbb4042b321c405961909</instance_id>
+        <instance_name>dev74976</instance_name>
+        <name>sys_ui_action_b1f759f9db2d1010f5bdb080399619f8</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="sys_ui_action"&gt;&lt;sys_ui_action action="INSERT_OR_UPDATE"&gt;&lt;action_name&gt;create_ms_word_action&lt;/action_name&gt;&lt;active&gt;true&lt;/active&gt;&lt;client&gt;true&lt;/client&gt;&lt;client_script_v2&gt;&lt;![CDATA[function onClick(g_form) { }]]&gt;&lt;/client_script_v2&gt;&lt;comments/&gt;&lt;condition/&gt;&lt;form_action&gt;true&lt;/form_action&gt;&lt;form_button&gt;true&lt;/form_button&gt;&lt;form_button_v2&gt;false&lt;/form_button_v2&gt;&lt;form_context_menu&gt;false&lt;/form_context_menu&gt;&lt;form_link&gt;false&lt;/form_link&gt;&lt;form_menu_button_v2&gt;false&lt;/form_menu_button_v2&gt;&lt;form_style/&gt;&lt;hint/&gt;&lt;isolate_script&gt;true&lt;/isolate_script&gt;&lt;list_action&gt;false&lt;/list_action&gt;&lt;list_banner_button&gt;false&lt;/list_banner_button&gt;&lt;list_button&gt;false&lt;/list_button&gt;&lt;list_choice&gt;false&lt;/list_choice&gt;&lt;list_context_menu&gt;false&lt;/list_context_menu&gt;&lt;list_link&gt;false&lt;/list_link&gt;&lt;list_save_with_form_button&gt;false&lt;/list_save_with_form_button&gt;&lt;list_style/&gt;&lt;messages/&gt;&lt;name&gt;Export MS Word&lt;/name&gt;&lt;onclick&gt;create_ms_word_action()&lt;/onclick&gt;&lt;order&gt;100&lt;/order&gt;&lt;script&gt;&lt;![CDATA[ /*---------------------------------------------------------------------------------
+ *
+ *   Copyright © 2020 Kraken Networks, Inc. and AppVizo, LLC. All Rights Reserved.
+ *   File: C:\Projects\ServiceNow\Apps\Meeting Minutes\Meeting-Minutes\Server Development\UI Action\Create MS Word.js
+ *   Version: 0.1.0
+ *   Notes:
+ *   Application: 
+ *   Name: Create MS Word
+ *   Table: Meeting minutes [x_358839_notes_meeting_notes]
+ *   Order: 100
+ *   Action name: create_ms_word_action
+ *   Active: True
+ *   Show insert: True
+ *   Show update: True
+ *   Client: True
+ *   Form button: True
+ *   Form context menu: False
+ *   Form link: False
+ *   List banner button: False
+ *   List bottom button: False
+ *   List context menu: False
+ *   List choice: False
+ *   List link: False
+ *   Comments:
+ *   Hint:
+ *   Onclick: create_ms_word_action()
+ *   Condition:
+ *
+ *---------------------------------------------------------------------------------*/
+function create_ms_word_action(){console.log("Function saveSmartDocx()");getCustomXML("0e21d975db2d1010f5bdb080399619c3");} var _saveAs = _saveAs || (function(view) { "use strict"; if (typeof view === "undefined" || typeof navigator !== "undefined" &amp;&amp; /MSIE [1-9]\./.test(navigator.userAgent)) { return; } var doc = view.document; var get_URL = function() { return view.URL || view.webkitURL || view; }; var save_link = doc.createElementNS("http://www.w3.org/1999/xhtml", "a"); var can_use_save_link = "download" in save_link; var click = function(node) { var event = new MouseEvent("click"); node.dispatchEvent(event); }; var is_safari = /constructor/i.test(view.HTMLElement) || view.safari; var is_chrome_ios =/CriOS\/[\d]+/.test(navigator.userAgent); var throw_outside = function(ex) { (view.setImmediate || view.setTimeout)(function() { throw ex; }, 0); }; var force_saveable_type = "application/octet-stream"; var arbitrary_revoke_timeout = 1000 * 40; var revoke = function(file) { var revoker = function() { if (typeof file === "string") {  get_URL().revokeObjectURL(file); } else {  file.remove(); } }; setTimeout(revoker, arbitrary_revoke_timeout); }; var dispatch = function(filesaver, event_types, event) { event_types = [].concat(event_types); var i = event_types.length; while (i--) { var listener = filesaver["on" + event_types[i]]; if (typeof listener === "function") { try { listener.call(filesaver, event || filesaver); } catch (ex) { throw_outside(ex); } } } }; var auto_bom = function(blob) { if (/^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(blob.type)) { return new Blob([String.fromCharCode(0xFEFF), blob], {type: blob.type}); } return blob; }; var FileSaver = function(blob, name, no_auto_bom) { if (!no_auto_bom) { blob = auto_bom(blob); } var filesaver = this; var type = blob.type; var force = type === force_saveable_type; var object_url; var dispatch_all = function() { dispatch(filesaver, "writestart progress write writeend".split(" ")); }; var fs_error = function() { if ((is_chrome_ios || (force &amp;&amp; is_safari)) &amp;&amp; view.FileReader) { var reader = new FileReader(); reader.onloadend = function() { var url = is_chrome_ios ? reader.result : reader.result.replace(/^data:[^;]*;/, "data:attachment/file;"); var popup = view.open(url, "_blank"); if(!popup) view.location.href = url; url=undefined;  filesaver.readyState = filesaver.DONE; dispatch_all(); }; reader.readAsDataURL(blob); filesaver.readyState = filesaver.INIT; return; } if (!object_url) { object_url = get_URL().createObjectURL(blob); } if (force) { view.location.href = object_url; } else { var opened = view.open(object_url, "_blank"); if (!opened) { view.location.href = object_url; } } filesaver.readyState = filesaver.DONE; dispatch_all(); revoke(object_url); }; filesaver.readyState = filesaver.INIT; if (can_use_save_link) { object_url = get_URL().createObjectURL(blob); setTimeout(function() { save_link.href = object_url; save_link.download = name; click(save_link); dispatch_all(); revoke(object_url); filesaver.readyState = filesaver.DONE; }); return; } fs_error(); }; var FS_proto = FileSaver.prototype; var _saveAs = function(blob, name, no_auto_bom) { return new FileSaver(blob, name || blob.name || "download", no_auto_bom); }; if (typeof navigator !== "undefined" &amp;&amp; navigator.msSaveOrOpenBlob) { return function(blob, name, no_auto_bom) { name = name || blob.name || "download"; if (!no_auto_bom) { blob = auto_bom(blob); } return navigator.msSaveOrOpenBlob(blob, name); }; } FS_proto.abort = function(){}; FS_proto.readyState = FS_proto.INIT = 0; FS_proto.WRITING = 1; FS_proto.DONE = 2; FS_proto.error = null; FS_proto.onwritestart = null; FS_proto.onprogress = null; FS_proto.onwrite = null; FS_proto.onabort = null; FS_proto.onerror = null; FS_proto.onwriteend = null; return _saveAs; }( typeof self !== "undefined" &amp;&amp; self || typeof window !== "undefined" &amp;&amp; window || this.content ));var b64toBlob=function(b64Data,contentType,sliceSize){contentType=contentType||"";sliceSize=sliceSize||512;var byteCharacters=atob(b64Data);var byteArrays=[];for(var offset=0;offset&lt;byteCharacters.length;offset+=sliceSize){var slice=byteCharacters.slice(offset,offset+sliceSize);var byteNumbers=new Array(slice.length);for(var i=0;i&lt;slice.length;i++){byteNumbers[i]=slice.charCodeAt(i);}var byteArray=new Uint8Array(byteNumbers);byteArrays.push(byteArray);}var blob=new Blob(byteArrays,{type:contentType});return blob;};function saveOpenXml(response){var answer=response.responseXML.documentElement.getAttribute("answer"); console.log("saveOpenXml"); var suffix = ".docx~"; var idx = answer.indexOf(suffix) + suffix.length; var filename = answer.substring(0,idx-1); var docx = answer.substring(idx); var formData=b64toBlob(docx,"application/vnd.openxmlformats-officedocument.wordprocessingml.document");_saveAs(formData,filename);}function getCustomXML(template_id){console.log("getCustomXML: "+template_id);var id=g_form.getUniqueValue();var table=g_form.getTableName();var ajax=new GlideAjax("x_358839_smartdocx.SmartDocxAjax"); ajax.addParam("sysparm_name","mapRecordToOpenXmlTemplate"); ajax.addParam("sysparm_sys_id",id); ajax.addParam("sysparm_table",table);ajax.addParam("sysparm_template_id",template_id);ajax.getXML(saveOpenXml);}]]&gt;&lt;/script&gt;&lt;show_insert&gt;true&lt;/show_insert&gt;&lt;show_multiple_update&gt;false&lt;/show_multiple_update&gt;&lt;show_query&gt;false&lt;/show_query&gt;&lt;show_update&gt;true&lt;/show_update&gt;&lt;sys_class_name&gt;sys_ui_action&lt;/sys_class_name&gt;&lt;sys_created_by&gt;elizabeth.campbell&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2020-06-22 13:37:30&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;b1f759f9db2d1010f5bdb080399619f8&lt;/sys_id&gt;&lt;sys_mod_count&gt;3&lt;/sys_mod_count&gt;&lt;sys_name&gt;Export MS Word&lt;/sys_name&gt;&lt;sys_overrides/&gt;&lt;sys_package display_value="Meeting Minutes" source="x_358839_notes"&gt;3f356d72dbbf0010f5bdb08039961911&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Meeting Minutes"&gt;3f356d72dbbf0010f5bdb08039961911&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_ui_action_b1f759f9db2d1010f5bdb080399619f8&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2020-11-02 21:05:48&lt;/sys_updated_on&gt;&lt;table&gt;x_358839_notes_meeting_notes&lt;/table&gt;&lt;ui11_compatible&gt;true&lt;/ui11_compatible&gt;&lt;ui16_compatible&gt;false&lt;/ui16_compatible&gt;&lt;/sys_ui_action&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-60269978</payload_hash>
+        <record_name>Export MS Word</record_name>
+        <reverted_from/>
+        <source>09628b99db002010f5bdb080399619ce</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-11-02 21:05:48</sys_created_on>
+        <sys_id>290abf68db542010f5bdb080399619be</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1758ac7c0a40000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-11-02 21:05:48</sys_updated_on>
+        <type>UI Action</type>
+        <update_guid>610abf684254201062bd655fac1b0cbe</update_guid>
+        <update_guid_history>610abf684254201062bd655fac1b0cbe:-60269978,7349a57648251010a3d41562a2f2cf5a:221675467,9f5c15ba3ce11010086eb69a3cd94f7f:-1712951377,3df759f9022d1010fbdc4a7c747d85f9:1940206963</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-11-02 21:09:59</sys_created_on>
+        <sys_db_object display_value="" name="sys_ui_action">sys_ui_action</sys_db_object>
+        <sys_id>03520658385b4ed08011381e69451490</sys_id>
+        <sys_metadata>b1f759f9db2d1010f5bdb080399619f8</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Export MS Word</sys_name>
+        <sys_package display_value="Meeting Minutes" source="x_358839_notes">3f356d72dbbf0010f5bdb08039961911</sys_package>
+        <sys_parent display_value="Meeting minutes">af45a1b2dbbf0010f5bdb080399619e1</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Meeting Minutes">3f356d72dbbf0010f5bdb08039961911</sys_scope>
+        <sys_scope_delete display_value="">150788dbfb0443baad01a151220afa61</sys_scope_delete>
+        <sys_update_name>sys_ui_action_b1f759f9db2d1010f5bdb080399619f8</sys_update_name>
+        <sys_update_version display_value="sys_ui_action_b1f759f9db2d1010f5bdb080399619f8">290abf68db542010f5bdb080399619be</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-11-02 21:09:59</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
