@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_dictionary action="DELETE" element="u_action_items" table="x_358839_notes_meeting_notes">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>no_sort=true,slushbucket_ref_no_expand=true</attributes>
+        <audit>false</audit>
+        <calculation/>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label>Action items</column_label>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>u_action_items</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <internal_type display_value="Reference">reference</internal_type>
+        <mandatory>false</mandatory>
+        <max_length>1024</max_length>
+        <name>x_358839_notes_meeting_notes</name>
+        <next_element/>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference display_value="" name="x_358839_act_action_item">x_358839_act_action_item</reference>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_dictionary</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-03-30 18:24:54</sys_created_on>
+        <sys_id>4934f5fedbbf0010f5bdb08039961992</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Action items</sys_name>
+        <sys_package display_value="Meeting Minutes" source="x_358839_notes">3f356d72dbbf0010f5bdb08039961911</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Meeting Minutes">3f356d72dbbf0010f5bdb08039961911</sys_scope>
+        <sys_update_name>sys_dictionary_x_358839_notes_meeting_notes_u_action_items</sys_update_name>
+        <sys_updated_by>thane.plummer</sys_updated_by>
+        <sys_updated_on>2020-06-22 13:32:56</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_dictionary>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Meeting Minutes">3f356d72dbbf0010f5bdb08039961911</application>
+        <file_path/>
+        <instance_id>68c65b33dbccbb4042b321c405961909</instance_id>
+        <instance_name>dev74976</instance_name>
+        <name>sys_dictionary_x_358839_notes_meeting_notes_u_action_items</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_dictionary action="INSERT_OR_UPDATE" element="u_action_items" table="x_358839_notes_meeting_notes"><active>true</active><array>false</array><array_denormalized>false</array_denormalized><attributes>no_sort=true,slushbucket_ref_no_expand=true</attributes><audit>false</audit><calculation/><choice/><choice_field/><choice_table/><column_label>Action items</column_label><comments/><create_roles/><default_value/><defaultsort/><delete_roles/><dependent/><dependent_on_field/><display>false</display><dynamic_creation>false</dynamic_creation><dynamic_creation_script/><dynamic_default_value/><dynamic_ref_qual/><element>u_action_items</element><element_reference>false</element_reference><foreign_database/><function_definition/><function_field>false</function_field><internal_type display_value="Reference">reference</internal_type><mandatory>false</mandatory><max_length>1024</max_length><name>x_358839_notes_meeting_notes</name><next_element/><primary>false</primary><read_only>false</read_only><read_roles/><reference display_value="" name="x_358839_act_action_item">x_358839_act_action_item</reference><reference_cascade_rule/><reference_floats>false</reference_floats><reference_key/><reference_qual/><reference_qual_condition/><reference_type/><sizeclass/><spell_check>false</spell_check><staged>false</staged><sys_class_name>sys_dictionary</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2020-03-30 18:24:54</sys_created_on><sys_id>4934f5fedbbf0010f5bdb08039961992</sys_id><sys_mod_count>1</sys_mod_count><sys_name>Action items</sys_name><sys_package display_value="Meeting Minutes" source="x_358839_notes">3f356d72dbbf0010f5bdb08039961911</sys_package><sys_policy/><sys_scope display_value="Meeting Minutes">3f356d72dbbf0010f5bdb08039961911</sys_scope><sys_update_name>sys_dictionary_x_358839_notes_meeting_notes_u_action_items</sys_update_name><sys_updated_by>thane.plummer</sys_updated_by><sys_updated_on>2020-06-22 13:32:56</sys_updated_on><table_reference>false</table_reference><text_index>false</text_index><unique>false</unique><use_dependent_field>false</use_dependent_field><use_dynamic_default>false</use_dynamic_default><use_reference_qualifier>simple</use_reference_qualifier><virtual>false</virtual><widget/><write_roles/><xml_view>false</xml_view></sys_dictionary></record_update>]]></payload>
+        <payload_hash>663122046</payload_hash>
+        <record_name>Meeting minutes.Action items</record_name>
+        <reverted_from/>
+        <source>733561b2dbbf0010f5bdb08039961926</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>thane.plummer</sys_created_by>
+        <sys_created_on>2020-06-22 13:32:56</sys_created_on>
+        <sys_id>cbe611f9db2d1010f5bdb0803996195b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>172dc3b59050000001</sys_recorded_at>
+        <sys_updated_by>thane.plummer</sys_updated_by>
+        <sys_updated_on>2020-06-22 13:32:56</sys_updated_on>
+        <type>Dictionary</type>
+        <update_guid>07e611f9132d1010109fc289a8193d5b</update_guid>
+        <update_guid_history>07e611f9132d1010109fc289a8193d5b:663122046,0134f5fe80bf0010c549806a3932b5a9:-250245884</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>elizabeth.campbell</sys_created_by>
+        <sys_created_on>2020-11-11 20:17:56</sys_created_on>
+        <sys_db_object display_value="" name="sys_dictionary">sys_dictionary</sys_db_object>
+        <sys_id>0209a63385004ade80376fd6b9c05fa9</sys_id>
+        <sys_metadata>4934f5fedbbf0010f5bdb08039961992</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Action items</sys_name>
+        <sys_package display_value="Meeting Minutes" source="x_358839_notes">3f356d72dbbf0010f5bdb08039961911</sys_package>
+        <sys_parent display_value="Meeting minutes">af45a1b2dbbf0010f5bdb080399619e1</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Meeting Minutes">3f356d72dbbf0010f5bdb08039961911</sys_scope>
+        <sys_scope_delete display_value="">150788dbfb0443baad01a151220afa61</sys_scope_delete>
+        <sys_update_name>sys_dictionary_x_358839_notes_meeting_notes_u_action_items</sys_update_name>
+        <sys_update_version display_value="sys_dictionary_x_358839_notes_meeting_notes_u_action_items">cbe611f9db2d1010f5bdb0803996195b</sys_update_version>
+        <sys_updated_by>elizabeth.campbell</sys_updated_by>
+        <sys_updated_on>2020-11-11 20:17:56</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Notes M2m Meeting Minutes Users" max_length="40" name="x_358839_notes_m2m_meeting_minutes_users" sizeclass="9" type="collection">
+        <element attributes="encode_utf8=false" label="Meeting minutes" max_length="32" name="meeting_minutes" reference="x_358839_notes_meeting_notes" type="reference"/>
+        <element attributes="encode_utf8=false" label="User" max_length="32" name="user" reference="sys_user" type="reference"/>
+        <index name="index">
+            <element name="meeting_minutes"/>
+        </index>
+        <index name="index2">
+            <element name="user"/>
+        </index>
+    </element>
+</database>

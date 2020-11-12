@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="u_non_system_attendees_y" label="Any non-system attendees?" language="en" table="x_358839_notes_meeting_notes">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>u_non_system_attendees_y</element>
+            <help/>
+            <hint/>
+            <label>Any non-system attendees?</label>
+            <language>en</language>
+            <name>x_358839_notes_meeting_notes</name>
+            <plural>Any non-system attendees?s</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-11-11 19:32:47</sys_created_on>
+            <sys_id>830b75ebdbd02010f5bdb080399619cc</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Any non-system attendees?</sys_name>
+            <sys_package display_value="Meeting Minutes" source="x_358839_notes">3f356d72dbbf0010f5bdb08039961911</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Meeting Minutes">3f356d72dbbf0010f5bdb08039961911</sys_scope>
+            <sys_update_name>sys_documentation_x_358839_notes_meeting_notes_u_non_system_attendees_y_en</sys_update_name>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-11-11 19:32:47</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

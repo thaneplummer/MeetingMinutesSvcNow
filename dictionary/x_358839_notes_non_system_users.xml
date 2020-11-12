@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Non system users" max_length="40" name="x_358839_notes_non_system_users" sizeclass="1" type="collection">
+        <element attributes="edge_encryption_enabled=true" label="Company / organization" max_length="60" name="u_company_organization" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Email" max_length="40" name="u_email" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="First name" max_length="40" name="u_first_name" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Last name" max_length="40" name="u_last_name" type="string"/>
+        <element label="Phone" max_length="40" name="u_phone" type="string"/>
+        <element attributes="encode_utf8=false" label="Related meeting" max_length="32" name="u_related_meeting" reference="x_358839_notes_meeting_notes" reference_floats="true" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" label="Title / position" max_length="40" name="u_title_positiion" type="string"/>
+        <index name="index">
+            <element name="u_related_meeting"/>
+        </index>
+    </element>
+</database>

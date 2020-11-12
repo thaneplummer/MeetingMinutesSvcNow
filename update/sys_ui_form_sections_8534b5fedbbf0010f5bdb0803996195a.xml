@@ -14,6 +14,62 @@
             <sys_updated_by>admin</sys_updated_by>
             <sys_updated_on>2020-03-30 18:24:54</sys_updated_on>
         </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>1</position>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-11-11 21:17:20</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>2af212e3db542010f5bdb0803996193a</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_358839_notes_meeting_notes" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">8534b5fedbbf0010f5bdb0803996195a</sys_ui_form>
+            <sys_ui_section caption="Personnel" display_value="Personnel" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">62f212e3db542010f5bdb08039961937</sys_ui_section>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-11-11 21:17:20</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>2</position>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-11-11 21:18:57</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>1a5396e3db542010f5bdb0803996195b</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_358839_notes_meeting_notes" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">8534b5fedbbf0010f5bdb0803996195a</sys_ui_form>
+            <sys_ui_section caption="Meeting details" display_value="Meeting details" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">4e5396e3db542010f5bdb08039961957</sys_ui_section>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-11-11 21:18:57</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>3</position>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-11-11 21:03:46</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>fbdf4eefdb142010f5bdb080399619cc</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_358839_notes_meeting_notes" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">8534b5fedbbf0010f5bdb0803996195a</sys_ui_form>
+            <sys_ui_section caption="Related records" display_value="Related records" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">3bdf4eefdb142010f5bdb080399619c9</sys_ui_section>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-11-11 21:18:57</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>4</position>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-11-11 21:03:46</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>fbdf8eefdb142010f5bdb08039961927</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_358839_notes_meeting_notes" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">8534b5fedbbf0010f5bdb0803996195a</sys_ui_form>
+            <sys_ui_section caption="Related meetings" display_value="Related meetings" name="x_358839_notes_meeting_notes" sys_domain="global" view="Default view">3fdf4eefdb142010f5bdb080399619ca</sys_ui_section>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-11-11 21:18:57</sys_updated_on>
+        </sys_ui_form_section>
         <sys_ui_form action="INSERT_OR_UPDATE">
             <name>x_358839_notes_meeting_notes</name>
             <roles/>

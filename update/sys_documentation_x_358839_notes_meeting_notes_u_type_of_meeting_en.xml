@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="u_type_of_meeting" label="Type of meeting" language="en" table="x_358839_notes_meeting_notes">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>u_type_of_meeting</element>
+            <help/>
+            <hint/>
+            <label>Type of meeting</label>
+            <language>en</language>
+            <name>x_358839_notes_meeting_notes</name>
+            <plural>Type of meetings</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>elizabeth.campbell</sys_created_by>
+            <sys_created_on>2020-11-11 19:22:05</sys_created_on>
+            <sys_id>4298f16bdbd02010f5bdb08039961942</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Type of meeting</sys_name>
+            <sys_package display_value="Meeting Minutes" source="x_358839_notes">3f356d72dbbf0010f5bdb08039961911</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Meeting Minutes">3f356d72dbbf0010f5bdb08039961911</sys_scope>
+            <sys_update_name>sys_documentation_x_358839_notes_meeting_notes_u_type_of_meeting_en</sys_update_name>
+            <sys_updated_by>elizabeth.campbell</sys_updated_by>
+            <sys_updated_on>2020-11-11 19:22:05</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>
