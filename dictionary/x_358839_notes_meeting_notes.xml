@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element label="Meeting minutes" max_length="40" name="x_358839_notes_meeting_notes" sizeclass="6" type="collection">
+    <element label="Meeting minutes" max_length="40" name="x_358839_notes_meeting_notes" sizeclass="5" type="collection">
         <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
         <element attributes="edge_encryption_enabled=true" label="Agenda" max_length="250" name="u_agenda" type="string"/>
         <element attributes="edge_encryption_enabled=true" label="Agenda items" max_length="500" name="u_agenda_item" type="string"/>

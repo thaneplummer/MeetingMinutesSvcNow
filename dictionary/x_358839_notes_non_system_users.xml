@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element label="Non system users" max_length="40" name="x_358839_notes_non_system_users" sizeclass="1" type="collection">
+    <element label="Non system users" max_length="40" name="x_358839_notes_non_system_users" sizeclass="4" type="collection">
         <element attributes="edge_encryption_enabled=true" label="Company / organization" max_length="60" name="u_company_organization" type="string"/>
         <element attributes="edge_encryption_enabled=true" label="Email" max_length="40" name="u_email" type="string"/>
         <element attributes="edge_encryption_enabled=true" label="First name" max_length="40" name="u_first_name" type="string"/>
